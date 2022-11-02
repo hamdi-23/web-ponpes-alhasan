@@ -5,7 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('template/assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('template/assets/img/favicon.png') }}">
+
     <title>
         Material Dashboard 2 by Creative Tim
     </title>
@@ -77,7 +78,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ isset($activeKitab) ?$activeKitab: ''
+                    <a class="nav-link text-white {{ isset($activeKitab
+                    ) ?$activeKitab
+                    : ''
             }} " href="{{ route('kitab.index') }}">
 
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

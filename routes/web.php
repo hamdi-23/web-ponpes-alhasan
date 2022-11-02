@@ -36,7 +36,7 @@ route::middleware(['auth:sanctum'])->group(function () {
     Route::get('santri/create', [santriController::class, 'create'])->name('santri.create');
     Route::post('santri/store', [santriController::class, 'store'])->name('santri.store');
     Route::get('santri/edit/{id}', [santriController::class, 'edit'])->name('santri.edit');
-    Route::post('santri/update/{id}', [santriController::class, 'update'])->name('santri.update');
+    Route::post('santri/update/{nis}', [santriController::class, 'update'])->name('santri.update');
     Route::get('santri/delete/{id}', [santriController::class, 'delete'])->name('santri.delete');
 });
 

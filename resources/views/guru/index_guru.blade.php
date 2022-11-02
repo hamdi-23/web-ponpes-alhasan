@@ -59,7 +59,8 @@
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 
-                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+
                                 <h6 class="text-white text-capitalize ps-3">DATA GURU</h6>
                             </div>
                         </div>
@@ -150,7 +151,7 @@
 
                                                                     <div class=" input-group-static my-3 ">
                                                                         <label>Pekerjaan</label>
-                                                                        <input type="text" class="form-control p-2" value="{{ $guru->job_id }}" readonly>
+                                                                        <input type="text" class="form-control p-2" value="{{ $guru->name_job }}" readonly>
                                                                     </div>
                                                                     <div class="input-group-static my-3">
                                                                         <label class="form-label">Jenis

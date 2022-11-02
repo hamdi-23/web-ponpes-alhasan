@@ -60,7 +60,7 @@
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 
-                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                            <div class="bg-gradient-info shadow-light border-radius-lg pt-4 pb-3">
                                 <h6 class="text-white text-capitalize ps-3">DATA SANTRI</h6>
                             </div>
                         </div>
@@ -77,6 +77,9 @@
                                             <tr align="center">
                                                 <th class="  opacity-20">
                                                     NO</th>
+                                                <th class=" opacity-20">
+                                                    NIS</th>
+
                                                 <th class=" opacity-20">
                                                     NAMA</th>
                                                 <th class=" opacity-20">
@@ -96,16 +99,19 @@
                                             @php
                                             $no =1;
                                             @endphp
-                                            @foreach($dataSantri as $index =>$row)
+                                            @foreach($dataSantri as $row)
 
 
                                             <tr align="center">
                                                 <td>
-                                                    <p class=" font-weight-bold ">{{$index + $dataSantri->firstItem()}}
-
-
+                                                    <p class=" font-weight-bold ">{{$no++}}
                                                     </p>
                                                 </td>
+                                                <td>
+                                                    <p class=" font-weight-bold ">{{ $row->nis
+                                                        }}</p>
+                                                </td>
+
                                                 <td>
                                                     <p class=" font-weight-bold ">{{ $row->name
                                                         }}</p>
@@ -129,9 +135,9 @@
                                                 </td>
                                                 <td class="d-flex" style="align-content:flex-start">
 
-                                                    <a href=" {{ route('santri.edit',$row->id) }}" type="button" class="btn bg-gradient-success"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                                    <a href=" {{ route('santri.edit',$row->nis) }}" type="button" class="btn bg-gradient-success"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                                     &nbsp;
-                                                    <a href="{{ route('santri.delete',$row->id) }}" type=" button" class="btn btn-danger delete" data-id="{{ $row->id}}" data-nama="{{ $row->name}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                    <a href="{{ route('santri.delete',$row->nis) }}" type=" button" class="btn btn-danger delete" data-id="{{ $row->id}}" data-nama="{{ $row->name}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
 
 
                                                     &nbsp;
@@ -155,56 +161,157 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
 
-                                                            <div class="table-responsive p-3">
-                                                                <form class="align-content-center p-4">
-                                                                    <h4>DATA SANTRI</h4>
-                                                                    <div class="input-group-static my-3">
-                                                                        <label class="form-label">Nama</label>
-                                                                        <input type="text" class="form-control p-2" value=" {{ $santri->name }}" aria-selected="true" readonly>
+                                                            <div class="table-responsive p-3" style="background-image: image('template/assets/img/ponpes.jpeg')">
+
+
+
+
+                                                                <form class=" align-content-center p-4" style="background-color: aliceblue">
+                                                                    <h4 align="center">DATA SANTRI</h4>
+                                                                    <div class=" input-group-static">
+                                                                        <label class="font-weight-bold mb-0">
+                                                                            <h5>Nama</h5>
+                                                                        </label>
+                                                                        <input type=" date" class="form-control p-2" value="{{ $santri->name }}" readonly>
                                                                     </div>
-                                                                    <div class=" input-group-static my-3 ">
-                                                                        <label>Tanggal Lahir</label>
-                                                                        <input type=" date" class="form-control p-2" value="{{ $santri->date_born }}" readonly>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="font-weight-bold mb-0">
+                                                                                    <h5>Tanggal Lahir</h5>
+                                                                                </label>
+
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->date_born }}" aria-selected="true" readonly>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="form-label">Jenis Kelamin</label>
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->gender }}" aria-selected="true" readonly>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="input-group-static my-3">
-                                                                        <label class="form-label">Jenis Kelamin</label>
-                                                                        <input type="text" class="form-control p-2" value="{{ $santri->gender }}" readonly>
-                                                                    </div>
-                                                                    <div class="input-group my-3 ">
-                                                                        <label class="form-label">Nomor Telepon</label>
-                                                                        <input type="text" class="form-control p-2" value="{{ $santri->phone }}" readonly>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="form-label">Nomor Telepon</label>
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->phone }}" aria-selected="true" readonly>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="form-label">Ukuran Jas</label>
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->size_jas }}" aria-selected="true" readonly>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
 
-                                                                    <div class="input-group-static my-3">
-                                                                        <label class="form-label">Ukuran Jas</label>
-                                                                        <input type="text" class="form-control p-2" value="{{ $row->size_jas }}" readonly>
+
+                                                                    <div class=" input-group-static my-2 mb-3">
+                                                                        <label>Alamat</label>
+                                                                        <input type=" date" class="form-control p-2" value="{{ $santri->address }}" readonly>
                                                                     </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                                                    Close
-                                                                </button>
-                                                            </div>
+                                                                    <h4>DATA ORANG TUA</h4>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="form-label">Nama Ayah</label>
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->father }}" aria-selected="true" readonly>
+
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="form-label">Nama Ibu</label>
+
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->mother }}" aria-selected="true" readonly>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="form-label">Pekerjaan Ayah</label>
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->father_job }}" aria-selected="true" readonly>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="form-label">Pekerjaan Ibu</label>
+
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->mother_job }}" aria-selected="true" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="form-label">Nomor Telepon Orang Tua</label>
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->phone_number }}" aria-selected="true" readonly>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <div class="input-group-static my-2">
+                                                                                <label class="form-label">Alamat</label>
+
+                                                                                <input type="text" class="form-control p-2" value=" {{ $santri->address1 }}" aria-selected="true" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    {{-- <div class="input-group-static my-2">
+                                                                        <label class="form-label">Jenis Kelamin</label>
+                                                                        <input type="text" class="form-control p-2" value="{{ $santri->phone_number }}" readonly>
+                                                            </div> --}}
+                                                            {{--
+                                                            <div class="input-group my-3 ">
+                                                                <label class="form-label">Nomor Telepon</label>
+                                                                <input type="text" class="form-control p-2" value="{{ $santri->father_job }}" readonly>
                                                         </div>
+
+                                                        <div class="input-group-static my-3">
+                                                            <label class="form-label">Ukuran Jas</label>
+                                                            <input type="text" class="form-control p-2" value="{{ $row->size_jas }}" readonly>
+                                                        </div> --}}
+
+
+
+                                                        </form>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                            Close
+                                                        </button>
                                                     </div>
                                                 </div>
-                                                @endforeach
-
                                 </div>
-
                             </div>
-                        </div>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                        </table>
-                    </div>
-                    {{$dataSantri->links('pagination::bootstrap-4') }}
+                            @endforeach
 
+                        </div>
+
+                    </div>
                 </div>
+                </tr>
+                @endforeach
+                </tbody>
+                </table>
             </div>
+            {{-- {{$dataSantri->links('pagination::bootstrap-4') }} --}}
+
+
         </div>
+    </div>
+    </div>
     </div>
 
     </div>
